@@ -1,0 +1,36 @@
+.product_img {
+    width: 400px;
+    height: 400px;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.product_img img {
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.product_img:hover img {
+    transform: scale(1.3);
+}
+
+.product-card {
+    overflow: hidden;
+}
+
+.product-image {
+    height: 150px;
+    width: auto;
+}
+
+.delivery-red {
+    color: red;
+}
+
+.delivery-green {
+    color: green;
+}

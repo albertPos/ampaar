@@ -1,0 +1,32 @@
+.product-card{
+    height: 370px;
+    transition: box-shadow 0.3s ease;
+    overflow: hidden;
+}
+
+.product-card:hover{
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.product-image {
+    height: 150px;
+    width: 100%;
+}
+
+.product-price{
+    font-weight: bold;
+}
+
+.filter-icon {
+    border: none;
+    background-color: transparent;
+    /* width: 30px; */
+    /* height: 20px; */
+    /* overflow: hidden; */
+}
+
+.filter-icon img {
+    /* width: 100%; */
+    height: 40px;
+    object-fit: cover;
+}

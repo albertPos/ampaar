@@ -1,0 +1,49 @@
+<app-header></app-header>
+
+<div class="container">
+    <h4 class="section-title my-4"> {{product.name}} </h4>
+    <hr>
+
+    <div class="row">
+        <div class="col-lg-5 mb-3">
+            <div class="product_img">
+                <img src="{{product.product_img}}" alt="Product Image">
+            </div>
+        </div>
+        <div class="col-lg-7">
+            <div class="product-section mt-3" *ngIf="product">
+                <h4 class="product-name">{{product.name}}</h4>
+                <p class="product-brand">Категория:<strong> {{product.brand}}</strong></p>
+
+                <div class="product-price">Цена: <h3>{{product.price | currency}}</h3>
+                </div>
+                <div class="serviceability">
+                    <label for="pincode" class="me-3">Поставщик:</label>
+                    <input type="text" id="pincode" class="m-3" [(ngModel)]="pincode" placeholder="Enter Pincode">
+                    <button class="btn btn-warning" (click)="checkServiceability()">Проверка</button>
+                    <p class="serviceability-result {{delivery_style}}" *ngIf="serviceabilityResult">{{ serviceabilityResult }}</p>
+                </div>
+                <h5>О продукте</h5>
+                <p class="product-description">{{product.product_desc}}</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="similar-products">
+        <h4 class="text-center">Similar Products</h4>
+        <div class="row">
+            <div class="col-md-3 my-3" *ngFor="let product of products | slice:0:4">
+                <div class="product-card border rounded shadow-sm p-4 text-center">
+                    <img src="{{ product.product_img }}" alt="{{ product.name }}" class="product-image">
+                    <h6 class="product-title mt-2">{{ product.name }}</h6>
+                    <p class="product-description text-truncate">{{ product.product_desc }}</p>
+                    <div class="product-footer">
+                        <p class="product-price">{{ product.price | currency }}</p>
+                        <a [routerLink]="['product-info/{{product.product_code}}']" class="btn btn-warning">Подробнее</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
