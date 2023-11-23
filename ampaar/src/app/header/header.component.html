@@ -7,6 +7,17 @@
             </div>
         </a>
 
+        <div class="input-group">
+            <input type="text" class="form-control me-1" placeholder="Что вас интересует">
+            <div class="input-group-append">
+                <button class="btn">
+                    <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="search" ></mat-icon>
+                </button>
+            </div>
+        </div>
+
+
+
         <button class="navbar-toggler collapsed" type="button" (click)="isNavbarCollapsed = !isNavbarCollapsed"
             [attr.aria-expanded]="!isNavbarCollapsed" aria-controls="navbarNav" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -27,13 +38,13 @@
             <ng-template #loggedOutContent>
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link" [routerLink]="['/']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Главная</a>
+                        <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="home"  [routerLink]="['/']"></mat-icon>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" [routerLink]="['/products']"  routerLinkActive="active">Каталог</a>
+                        <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="fact_check" [routerLink]="['/products']"></mat-icon>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" [routerLink]="['/login']"  routerLinkActive="active">Вход</a>
+                        <mat-icon aria-hidden="false" [routerLink]="['/login']" fontIcon="login"></mat-icon>
                     </li>
                 </ul>
 

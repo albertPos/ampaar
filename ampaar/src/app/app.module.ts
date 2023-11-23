@@ -13,6 +13,8 @@ import { ProductInfoComponent } from './product-info/product-info.component';
 import { ResultComponent } from './result/result.component';
 import { RegisterComponent } from './register/register.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import {MatIconModule} from '@angular/material/icon';
+import {MatCardModule} from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,9 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     NgbModule,
     ReactiveFormsModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatIconModule,
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]

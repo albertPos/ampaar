@@ -42,15 +42,6 @@
             <div class="product-section">
                 <!-- <h2 class="section-title my-4">Our Products</h2> -->
 
-                <!-- Search box -->
-                <div class="input-group">
-                    <input type="text" class="form-control me-1" placeholder="Поиск" [(ngModel)]="searchText">
-                    <div class="input-group-append">
-                        <button class="btn" (click)="clearSearch()">
-                            <img height="15" src="./../../assets/clear.png" alt="" srcset="">
-                        </button>
-                    </div>
-                </div>
 
                 <div class="row mt-3">
                     <!-- Total number of products -->
@@ -87,6 +78,21 @@
                         </div>
                     </div>
                 </div>
+                <mat-card class="card">
+                    <mat-card-header>
+                      <mat-card-title><h2>Мираторг</h2></mat-card-title>
+                    </mat-card-header>
+                    <img mat-card-image src="/assets/product.png" alt="Photo of a Shiba Inu">
+                    <mat-card-content>
+                      <p>
+                        Описание продукта
+                      </p>
+                    </mat-card-content>
+                    <mat-card-actions>
+                        <h5>350 руб</h5>
+                      <button mat-button>Заказать</button>
+                    </mat-card-actions>
+                  </mat-card>
             </div>
         </div>
     </div>

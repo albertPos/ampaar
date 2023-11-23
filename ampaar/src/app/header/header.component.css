@@ -1,11 +1,17 @@
 .header {
-    background:#2196f3ff;
+    background:white;
 
 }
 .nav-link {
-    color: white;
+    color: #1976D2;
 }
 
 .logo {
-max-width: 250px;
+max-width: 230px;
+}
+
+.input-group {
+    padding-left: 15%;
+    padding-right: 15%;
+
 }

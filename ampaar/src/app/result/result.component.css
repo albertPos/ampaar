@@ -30,3 +30,10 @@
     height: 40px;
     object-fit: cover;
 }
+
+.mat-card-title {
+    color: #1976D2;
+}
+button {
+    margin-left: 70px;
+}

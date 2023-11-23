@@ -8,6 +8,44 @@
 }
 
 button {
-    background: #2196f3ff!important;
-    
+    background: #1976D2!important;
+    color: white!important;
+    cursor:pointer;
 }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.nav-item {
+    padding: 10px;
+    color: #1976D2;
+    cursor:pointer;
+}
+
+.card {
+    max-width: 250px;
+  }
+  
+  .example-header-image {
+    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+    background-size: cover;
+  }
+
+  button {
+    border: none;
+  }
+
+  .banner {
+    padding-top: 60px;
+    text-align: center;
+  }
+
+  .product-category {
+    padding-top: 60px;
+    text-align: center;
+  }
+
+  .category-img {
+    width: 250px;
+    margin: 50px;
+  }
