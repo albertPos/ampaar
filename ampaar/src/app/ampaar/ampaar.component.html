@@ -1,0 +1,15 @@
+<app-header></app-header>
+
+<div class="container">
+    <div class="section2">
+    <h1 class="pred">Мои запасы</h1>
+    <mat-card class="ampaar-card" *ngFor = "let product of products">
+      
+      <span>Категория: {{ product.category_id }} {{ product.name }} </span>
+      <span class="example-spacer"></span>
+      <span align="end">- +  Количество {{product.count}}</span>
+
+
+    </mat-card>
+    </div>
+</div>

@@ -1,55 +1,28 @@
 <app-header></app-header>
 
-<div class="container text-center my-4">
-    <!-- Hero Section -->
-    <section class="hero-section">
-    </section>
-</div>
 
-<div class="container">
-    <section class="hero-section d-flex justify-content-center">
-        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="border shadow-lg p-4 rounded">
+<div class="outer" style="height:500px; width: 100%;">
+    <span class="inner">
+      <form class="form" [formGroup]="loginForm">
+        
+        <mat-form-field class="full-width" appearance="outline">
+          <mat-label>Введите номер телефона</mat-label>
+          <input id="phone" type="tel" matInput mask="(000) 000-00-00" prefix="+7 " formControlName="phone">
+        </mat-form-field>
+    
+        <mat-form-field class="full-width" appearance="outline">
+          <mat-label for="fullname">ФИО</mat-label>
+          <input id="fullname" type="text" matInput formControlName="fullname">
+        </mat-form-field>
 
-            <ngb-alert [dismissible]="false" *ngIf="error" class="error alert-danger">
-                <i class="fas fa-info-circle me-1"></i><strong>Warning!</strong> {{loginMessage}}
-            </ngb-alert>
-            
-            <h5 class="text-center my-3"></h5>
 
-            <div class="row my-3">
-                <div class="col-sm-12">
-                    <div class="form-group">
-                        <label>Телефон</label>
-                        <input type="email" id="email" formControlName="email" class="form-control" />
-                        <span class="error" *ngIf="email?.invalid && email?.touched">Email is required</span>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="row my-3">
-                <div class="col-sm-12">
-                    <div class="form-group">
-                        <label>Пароль</label>
-                        <input type="password" formControlName="password" class="form-control" />
-                        <span class="error" *ngIf="password?.invalid && password?.touched">Password is required.</span>
-                    </div>
-                </div>
-            </div>
 
-            <div class="text-center">
-                <button type="submit" class="btn  mt-3 w-100">Войти</button>
-            </div>
-
-            <div class="row my-1 p-2">
-                <div class="col-sm-12 text-center">
-                    <a [routerLink]="['/register']">Зарегистрироваться </a>
-                </div>
-            </div>
-
-        </form>
-
-    </section>
-</div> <br>
+      </form>   
+      <button mat-raised-button color="primary" class="btn" (click)="login()">Войти</button>
+      <br />
+      <br />
+    </span>
+  </div>
 
 
 <router-outlet></router-outlet>

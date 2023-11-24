@@ -1,7 +1,9 @@
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { UserModel } from 'src/app/models/User.model';
+import { AppService } from '../app.service';
 
 @Component({
   selector: 'app-login',
@@ -10,66 +12,46 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent {
 
-  loginForm: FormGroup;
-  error: boolean;
-  loginMessage: string;
+  hide = true;
+  user = UserModel;
+  message: string;
+  error: boolean = false;
+  loader: boolean = false;
+  loginForm = new FormGroup({
+    phone: new FormControl(''),
+    fullname: new FormControl(''),
+  });
 
-  get email() { return this.loginForm.get('email') }
-  get password() { return this.loginForm.get('password') }
-  
-  constructor(
-    private formBuilder: FormBuilder,
-    private http: HttpClient,
-    private router: Router
-  ) { }
+  constructor(private appService: AppService,
+              private router: Router) {
+    this.appService.loader.subscribe(loader => this.loader = loader);
+    this.appService.error.subscribe(error => this.message = error);
+    this.appService.loader.emit(false);
+    this.appService.isLogged.emit(false);
+    this.appService.title.emit('Авторизация');
+    localStorage.setItem("user", "");
+    this.message = "Введите данные";
+  }
 
   ngOnInit(): void {
-    this.initLoginForm();
   }
 
-  initLoginForm(): void {
-    this.loginForm = this.formBuilder.group({
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6)]]
-    });
-  }
-
-  onSubmit(): void {
-    if (this.loginForm.invalid) {
-      this.loginMessage = "Login form is invalid.";
-      console.error('Login form is invalid.');
-      return;
-    }
-
-    const email = this.loginForm.value.email;
-    const pass = this.loginForm.value.password;
-
-    const loginUrl = 'http://localhost:8081/login';
-    const body = JSON.stringify({ email, pass });
-    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-
-    this.http.post(loginUrl, body, { headers }).subscribe({
-      next: (response: any) => {
-        console.log("Login Response: ",response);
-        this.loginMessage = response.message
-        localStorage.setItem('isLoggedIn', 'true');
-        this.router.navigate(['products']);
-      },
-      error: (error: any) => {
-        if (error instanceof HttpErrorResponse) {
-          if (error.status === 401) {
-            this.error = true;
-            this.loginMessage = error.error.message;
-            console.error(error.error);
-            this.loginForm.reset();
-          } else {
-            console.warn('An error occurred during login:', error.error);
-            this.router.navigateByUrl('/error');
-          }
-        }
+  login() {
+    this.error = false;
+    this.message = "Подождите, идет авторизация...";
+    this.appService.loader.emit(true);
+    
+    this.appService.login(this.loginForm.value).subscribe(result => {
+      console.log(JSON.stringify(result));
+      if(result.status === 'success'){
+        this.user = result.data;
+        localStorage.setItem("user", JSON.stringify(this.user));
+        this.router.navigate(['/']);
+      }else{
+        this.error = true;
+        this.appService.loader.emit(false);
+        localStorage.setItem("user", "");
       }
     });
   }
-
-
 }

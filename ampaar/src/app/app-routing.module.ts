@@ -7,6 +7,8 @@ import { ProductInfoComponent } from './product-info/product-info.component';
 import { RegisterComponent } from './register/register.component';
 import { ResultComponent } from './result/result.component';
 import { AuthGuard } from './auth.guard';
+import { AmpaarComponent } from './ampaar/ampaar.component';
+import { SellComponent } from './sell/sell.component';
 
 
 const routes: Routes = [
@@ -27,6 +29,14 @@ const routes: Routes = [
   {
     component: ResultComponent,
     path:'products'
+  },
+  {
+    component: AmpaarComponent,
+    path:'ampaar'
+  },
+  {
+    component: SellComponent,
+    path:'sell'
   },
   {
     component: ResultComponent,

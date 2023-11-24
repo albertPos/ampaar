@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ProductsService } from '../products.service';
 import { Product } from '../product';
+import { AppService } from '../app.service';
 
 @Component({
   selector: 'app-result',
@@ -11,7 +11,7 @@ import { Product } from '../product';
 
 export class ResultComponent implements OnInit {
 
-  constructor(private product: ProductsService, private router: Router, private route: ActivatedRoute) { }
+  constructor(private product: AppService, private router: Router, private route: ActivatedRoute) { }
 
   products: Product[] = [];
 
@@ -29,9 +29,8 @@ export class ResultComponent implements OnInit {
       this.isLoggedIn = localStorage.getItem('isLoggedIn');
       
       this.product.getProduct().subscribe((products: any) => {
-        console.warn(products)
-        this.products = products as Product[]
-        console.warn(this.products)
+        console.log(products)
+        this.products = products as Product[];
 
         this.brands = this.products.map(product => product.brand);
         console.log('Brands:', this.brands);

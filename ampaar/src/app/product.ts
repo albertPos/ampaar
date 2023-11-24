@@ -1,4 +1,5 @@
 export interface Product {
+    category_id: any;
     brand: String;
     name: String;
     price: number;

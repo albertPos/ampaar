@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -15,6 +15,13 @@ import { RegisterComponent } from './register/register.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import {MatIconModule} from '@angular/material/icon';
 import {MatCardModule} from '@angular/material/card';
+import { AmpaarComponent } from './ampaar/ampaar.component';
+import {MatGridListModule} from '@angular/material/grid-list';
+import {MatButtonModule} from '@angular/material/button';
+import { SellComponent } from './sell/sell.component';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatSelectModule} from '@angular/material/select';
+import {MatInputModule} from '@angular/material/input';
 
 @NgModule({
   declarations: [
@@ -25,7 +32,9 @@ import {MatCardModule} from '@angular/material/card';
     ResultComponent,
     ProductInfoComponent,
     HeaderComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    AmpaarComponent,
+    SellComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +44,13 @@ import {MatCardModule} from '@angular/material/card';
     FormsModule,
     HttpClientModule,
     MatIconModule,
-    MatCardModule
+    MatCardModule,
+    MatGridListModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    BrowserAnimationsModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]

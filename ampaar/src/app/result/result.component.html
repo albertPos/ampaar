@@ -9,7 +9,7 @@
             <div class="filter-section row">
 
                 <button class="filter-icon col d-flex justify-content-end d-lg-none" (click)="toggleFilter()">
-                    <img src="./../../assets/filter.png" alt="" srcset="">
+
                 </button>
 
                 <div [ngClass]="{'collapse': !isFilterExpanded, 'show': isFilterExpanded}" class="d-lg-block">
@@ -29,9 +29,6 @@
                         <input type="number" class="form-control my-3" placeholder="Maximum Price"
                             [(ngModel)]="maxPrice">
                     </div>
-
-                    <!-- Filter Button -->
-                    <button class="btn" (click)="clearFilter()">Сбросить</button>
                 </div>
             </div>
         </div>
@@ -45,8 +42,6 @@
 
                 <div class="row mt-3">
                     <!-- Total number of products -->
-                    <div class="col total-products">{{ filteredProducts.length }} наименований</div>
-
                     <div class="col sort-by d-flex justify-content-end">
                         <label for="sortOptions" class="me-2">Сортировать:</label>
                         <select id="sortOptions" [(ngModel)]="sortBy" (change)="applySort()">
@@ -60,29 +55,24 @@
 
                 <div class="row" *ngIf="filteredProducts.length === 0">
                     <div class="col">
-                        <p class="text-center mt-5">Нет данных</p>
                     </div>
                 </div>
 
                 <div class="row" *ngIf="filteredProducts.length > 0">
                     <div class="col-md-3 my-3" *ngFor="let product of filteredProducts">
                         <div class="product-card border rounded p-4 text-center">
-                            <img src="{{ product.product_img }}" alt="{{ product.name }}" class="product-image">
                             <h6 class="product-title mt-2">{{ product.name }}</h6>
                             <p class="product-description text-truncate">{{ product.product_desc }}</p>
                             <div class="product-footer">
                                 <p *ngIf="isLoggedIn === 'true'" class="product-price">{{ product.price | currency }}</p>
-                                <button class="btn btn-warning" [routerLink]="'/product-info/' + product.product_code"
-                                [disabled]="isLoggedIn === 'false'">View Details</button>
                             </div>
                         </div>
                     </div>
                 </div>
-                <mat-card class="card">
+                <mat-card class="card" >
                     <mat-card-header>
                       <mat-card-title><h2>Мираторг</h2></mat-card-title>
                     </mat-card-header>
-                    <img mat-card-image src="/assets/product.png" alt="Photo of a Shiba Inu">
                     <mat-card-content>
                       <p>
                         Описание продукта

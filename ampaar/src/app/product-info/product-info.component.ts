@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductsService } from '../products.service';
+import { AppService } from '../app.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Product } from '../product';
 
@@ -25,10 +25,11 @@ export class ProductInfoComponent implements OnInit {
     price: 0,
     product_code: '',
     product_desc: '',
-    product_img: ''
+    product_img: '',
+    category_id: undefined
   };
 
-  constructor(private productService: ProductsService, private router: Router, private route: ActivatedRoute) { }
+  constructor(private productService: AppService, private router: Router, private route: ActivatedRoute) { }
 
   isLoggedIn;
   
